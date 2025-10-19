@@ -1,0 +1,8 @@
+fn add(a, b) (
+    let result = a + b
+    return result
+)
+
+let x = add(10, 20)
+
+keywords = let fn if else while return true false
