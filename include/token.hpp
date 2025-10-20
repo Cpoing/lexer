@@ -30,6 +30,12 @@ struct Token
 		case TokenType::TOKEN_LPAREN: typeName = "TOKEN_LPAREN"; break;
 		case TokenType::TOKEN_RPAREN: typeName = "TOKEN_RPAREN"; break;
 		case TokenType::TOKEN_STRING: typeName = "TOKEN_STRING"; break;
+		case TokenType::TOKEN_FN: typeName = "TOKEN_FN"; break;
+		case TokenType::TOKEN_COMMA: typeName = "TOKEN_COMMA"; break;
+		case TokenType::TOKEN_LET: typeName = "TOKEN_LET"; break;
+		case TokenType::TOKEN_PLUS: typeName = "TOKEN_PLUS"; break;
+		case TokenType::TOKEN_LBRACE: typeName = "TOKEN_LBRACE"; break;
+		case TokenType::TOKEN_RBRACE: typeName = "TOKEN_RBRACE"; break;
 		}
 		os << typeName << "('" << token.lexeme << "') @ " << token.line << ":" << token.column;
 		return os;

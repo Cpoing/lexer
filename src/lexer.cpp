@@ -35,6 +35,11 @@ Token Lexer::identifier()
 	std::string value;
 	while (!isAtEnd() && std::isalnum(peek()))
 		value += advance();
+
+	if (value == "fn")
+		return Token(TokenType::TOKEN_FN, value, line, startCol);
+	else if (value == "let")
+		return Token(TokenType::TOKEN_LET, value, line, startCol);
 	
 	return Token(TokenType::TOKEN_ID, value, line, startCol);
 }
@@ -93,6 +98,27 @@ std::vector<Token> Lexer::tokenize()
 		else if (c == ')')
 		{
 			tokens.emplace_back(TokenType::TOKEN_RPAREN, ")", line, col);
+			advance();
+		}
+		else if (c == ',')
+		{
+			tokens.emplace_back(TokenType::TOKEN_COMMA, ",", line, col);
+			advance();
+
+		}
+		else if (c == '+')
+		{
+			tokens.emplace_back(TokenType::TOKEN_PLUS, "+", line, col);
+			advance();
+		}
+		else if (c == '{')
+		{
+			tokens.emplace_back(TokenType::TOKEN_LBRACE, "{", line, col);
+			advance();
+		}
+		else if (c == '}')
+		{
+			tokens.emplace_back(TokenType::TOKEN_RBRACE, "}", line, col);
 			advance();
 		}
 		else
