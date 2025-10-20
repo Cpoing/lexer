@@ -6,7 +6,7 @@
 
 int main()
 {
-    std::ifstream inputFile("../examples/var.txt");
+    std::ifstream inputFile("../examples/hello.txt");
     if (!inputFile.is_open())
     {
         std::cerr << "Error: could not open input file!\n";

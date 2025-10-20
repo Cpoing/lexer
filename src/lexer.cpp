@@ -35,6 +35,7 @@ Token Lexer::identifier()
 	std::string value;
 	while (!isAtEnd() && std::isalnum(peek()))
 		value += advance();
+	
 	return Token(TokenType::TOKEN_ID, value, line, startCol);
 }
 
@@ -47,6 +48,20 @@ Token Lexer::integer()
 		value += advance();
 
 	return Token(TokenType::TOKEN_INT, value, line, startCol);
+}
+
+Token Lexer::string()
+{
+	int startCol = col;
+	std::string value;
+	advance();
+	
+	while (!isAtEnd()) {
+		if (peek() == '\"' || peek() == '\'') break;
+		value += advance();
+	}
+	advance();
+	return Token(TokenType::TOKEN_STRING, value, line, startCol);
 }
 
 std::vector<Token> Lexer::tokenize()
@@ -63,9 +78,21 @@ std::vector<Token> Lexer::tokenize()
 			tokens.push_back(identifier());
 		else if (std::isdigit(c))
 			tokens.push_back(integer());
+		else if (c == '\'' || c == '\"')
+			tokens.push_back(string());
 		else if (c == '=')
 		{
 			tokens.emplace_back(TokenType::TOKEN_EQUALS, "=", line, col);
+			advance();
+		}
+		else if (c == '(')
+		{
+			tokens.emplace_back(TokenType::TOKEN_LPAREN, "(", line, col);
+			advance();
+		}
+		else if (c == ')')
+		{
+			tokens.emplace_back(TokenType::TOKEN_RPAREN, ")", line, col);
 			advance();
 		}
 		else

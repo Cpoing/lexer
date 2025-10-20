@@ -27,6 +27,9 @@ struct Token
 		case TokenType::TOKEN_INT: typeName = "TOKEN_INT"; break;
 		case TokenType::TOKEN_EQUALS: typeName = "TOKEN_EQUALS"; break;
 		case TokenType::TOKEN_EOF: typeName = "TOKEN_EOF"; break;
+		case TokenType::TOKEN_LPAREN: typeName = "TOKEN_LPAREN"; break;
+		case TokenType::TOKEN_RPAREN: typeName = "TOKEN_RPAREN"; break;
+		case TokenType::TOKEN_STRING: typeName = "TOKEN_STRING"; break;
 		}
 		os << typeName << "('" << token.lexeme << "') @ " << token.line << ":" << token.column;
 		return os;

@@ -21,4 +21,5 @@ private:
 	void skipWhiteSpace(); // skips spaces, tabs, and newlines
 	Token identifier(); // TOKEN_ID('let'), reads char until end of identifier and creates a token : TOKEN(TokenType::TOKEN_ID, "let", line, column);
 	Token integer(); // TOKEN_INT('123'), reads digits until end of number and creates a token : Token(TokenType::TOKEN_INT, "123", line, column);
+	Token string();
 };
