@@ -21,7 +21,7 @@ char Lexer::advance()
 	else
 		col++;
 	return c;
-};
+}
 
 void Lexer::skipWhiteSpace()
 {
@@ -40,6 +40,10 @@ Token Lexer::identifier()
 		return Token(TokenType::TOKEN_FN, value, line, startCol);
 	else if (value == "let")
 		return Token(TokenType::TOKEN_LET, value, line, startCol);
+	else if (value == "return")
+		return Token(TokenType::TOKEN_RETURN, value, line, startCol);
+	else if (value == "print")
+		return Token(TokenType::TOKEN_PRINT, value, line, startCol);
 	
 	return Token(TokenType::TOKEN_ID, value, line, startCol);
 }
@@ -104,11 +108,20 @@ std::vector<Token> Lexer::tokenize()
 		{
 			tokens.emplace_back(TokenType::TOKEN_COMMA, ",", line, col);
 			advance();
-
 		}
 		else if (c == '+')
 		{
 			tokens.emplace_back(TokenType::TOKEN_PLUS, "+", line, col);
+			advance();
+		}
+		else if (c == '-')
+		{
+			tokens.emplace_back(TokenType::TOKEN_MINUS, "-", line, col);
+			advance();
+		}
+		else if (c == '*')
+		{
+			tokens.emplace_back(TokenType::TOKEN_ASTERISK, "*", line, col);
 			advance();
 		}
 		else if (c == '{')

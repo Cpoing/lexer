@@ -4,9 +4,6 @@
 #include <string>
 #include <iostream>
 
-//TOKEN_ID('let') @ 1:1
-//TOKEN_ID('x') @ 1:5
-
 struct Token
 {
 	TokenType type;
@@ -23,19 +20,28 @@ struct Token
 		std::string typeName;
 		switch (token.type)
 		{
-		case TokenType::TOKEN_ID: typeName = "TOKEN_ID"; break;
-		case TokenType::TOKEN_INT: typeName = "TOKEN_INT"; break;
-		case TokenType::TOKEN_EQUALS: typeName = "TOKEN_EQUALS"; break;
-		case TokenType::TOKEN_EOF: typeName = "TOKEN_EOF"; break;
-		case TokenType::TOKEN_LPAREN: typeName = "TOKEN_LPAREN"; break;
-		case TokenType::TOKEN_RPAREN: typeName = "TOKEN_RPAREN"; break;
-		case TokenType::TOKEN_STRING: typeName = "TOKEN_STRING"; break;
-		case TokenType::TOKEN_FN: typeName = "TOKEN_FN"; break;
-		case TokenType::TOKEN_COMMA: typeName = "TOKEN_COMMA"; break;
-		case TokenType::TOKEN_LET: typeName = "TOKEN_LET"; break;
-		case TokenType::TOKEN_PLUS: typeName = "TOKEN_PLUS"; break;
-		case TokenType::TOKEN_LBRACE: typeName = "TOKEN_LBRACE"; break;
-		case TokenType::TOKEN_RBRACE: typeName = "TOKEN_RBRACE"; break;
+			case TokenType::TOKEN_ID:        typeName = "TOKEN_ID"; break;
+			case TokenType::TOKEN_INT:       typeName = "TOKEN_INT"; break;
+			case TokenType::TOKEN_STRING:    typeName = "TOKEN_STRING"; break;
+
+			case TokenType::TOKEN_FN:        typeName = "TOKEN_FN"; break;
+			case TokenType::TOKEN_LET:       typeName = "TOKEN_LET"; break;
+			case TokenType::TOKEN_RETURN:    typeName = "TOKEN_RETURN"; break;
+			case TokenType::TOKEN_PRINT:     typeName = "TOKEN_PRINT"; break;
+
+			case TokenType::TOKEN_EQUALS:    typeName = "TOKEN_EQUALS"; break;
+			case TokenType::TOKEN_PLUS:      typeName = "TOKEN_PLUS"; break;
+			case TokenType::TOKEN_MINUS:     typeName = "TOKEN_MINUS"; break;
+			case TokenType::TOKEN_ASTERISK:  typeName = "TOKEN_ASTERISK"; break;
+			case TokenType::TOKEN_SLASH:     typeName = "TOKEN_SLASH"; break;
+
+			case TokenType::TOKEN_LPAREN:    typeName = "TOKEN_LPAREN"; break;
+			case TokenType::TOKEN_RPAREN:    typeName = "TOKEN_RPAREN"; break;
+			case TokenType::TOKEN_LBRACE:    typeName = "TOKEN_LBRACE"; break;
+			case TokenType::TOKEN_RBRACE:    typeName = "TOKEN_RBRACE"; break;
+			case TokenType::TOKEN_COMMA:     typeName = "TOKEN_COMMA"; break;
+
+			case TokenType::TOKEN_EOF:       typeName = "TOKEN_EOF"; break;
 		}
 		os << typeName << "('" << token.lexeme << "') @ " << token.line << ":" << token.column;
 		return os;
