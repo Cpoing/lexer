@@ -28,12 +28,23 @@ struct Token
 			case TokenType::TOKEN_LET:       typeName = "TOKEN_LET"; break;
 			case TokenType::TOKEN_RETURN:    typeName = "TOKEN_RETURN"; break;
 			case TokenType::TOKEN_PRINT:     typeName = "TOKEN_PRINT"; break;
+			case TokenType::TOKEN_IF: 	     typeName = "TOKEN_IF"; break;
+			case TokenType::TOKEN_ELIF:      typeName = "TOKEN_ELIF"; break;
+			case TokenType::TOKEN_ELSE:		 typeName = "TOKEN_ELSE"; break;
+			case TokenType::TOKEN_WHILE:     typeName = "TOKEN_WHILE"; break;
+			case TokenType::TOKEN_TRUE:      typeName = "TOKEN_TRUE"; break;
+			case TokenType::TOKEN_FALSE:     typeName = "TOKEN_FALSE"; break;
 
-			case TokenType::TOKEN_EQUALS:    typeName = "TOKEN_EQUALS"; break;
+			case TokenType::TOKEN_ASSIGN:    typeName = "TOKEN_ASSIGN"; break;
 			case TokenType::TOKEN_PLUS:      typeName = "TOKEN_PLUS"; break;
 			case TokenType::TOKEN_MINUS:     typeName = "TOKEN_MINUS"; break;
 			case TokenType::TOKEN_ASTERISK:  typeName = "TOKEN_ASTERISK"; break;
 			case TokenType::TOKEN_SLASH:     typeName = "TOKEN_SLASH"; break;
+			case TokenType::TOKEN_EQUALS:    typeName = "TOKEN_EQUALS"; break;
+			case TokenType::TOKEN_LT:        typeName = "TOKEN_LT"; break;
+			case TokenType::TOKEN_LE:        typeName = "TOKEN_LE"; break;
+			case TokenType::TOKEN_GT:        typeName = "TOKEN_GT"; break;
+			case TokenType::TOKEN_GE:        typeName = "TOKEN_GE"; break;
 
 			case TokenType::TOKEN_LPAREN:    typeName = "TOKEN_LPAREN"; break;
 			case TokenType::TOKEN_RPAREN:    typeName = "TOKEN_RPAREN"; break;
