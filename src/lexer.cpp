@@ -101,14 +101,48 @@ std::vector<Token> Lexer::tokenize()
 			tokens.push_back(integer());
 		else if (c == '\'' || c == '\"')
 			tokens.push_back(string());
-		else if (c == '/')
-		{
-			tokens.emplace_back(TokenType::TOKEN_SLASH, "=", line, col);
-			advance();
-		}
 		else if (c == '=')
 		{
-			tokens.emplace_back(TokenType::TOKEN_EQUALS, "=", line, col);
+			advance();
+			if (peek() == '=')
+			{
+				advance();
+				tokens.emplace_back(TokenType::TOKEN_EQUALS, "==", line, col);
+			}
+			else
+			{
+				tokens.emplace_back(TokenType::TOKEN_ASSIGN, "=", line, col);
+			}
+		}
+		else if (c == '<')
+		{
+			advance();
+			if (peek() == '=')
+			{
+				advance();
+				tokens.emplace_back(TokenType::TOKEN_LE, "<=", line, col);
+			}
+			else
+			{
+				tokens.emplace_back(TokenType::TOKEN_LT, "<", line, col);
+			}
+		}
+		else if (c == '>')
+		{
+			advance();
+			if (peek() == '=')
+			{
+				advance();
+				tokens.emplace_back(TokenType::TOKEN_GE, ">=",line, col);
+			}
+			else
+			{
+				tokens.emplace_back(TokenType::TOKEN_GT, ">",line, col);
+			}
+		}
+		else if (c == '/')
+		{
+			tokens.emplace_back(TokenType::TOKEN_SLASH, "/", line, col);
 			advance();
 		}
 		else if (c == '(')
