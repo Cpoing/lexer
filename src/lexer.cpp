@@ -44,6 +44,18 @@ Token Lexer::identifier()
 		return Token(TokenType::TOKEN_RETURN, value, line, startCol);
 	else if (value == "print")
 		return Token(TokenType::TOKEN_PRINT, value, line, startCol);
+	else if (value == "if")
+		return Token(TokenType::TOKEN_IF, value, line, startCol);
+	else if (value == "elif")
+		return Token(TokenType::TOKEN_ELIF, value, line, startCol);
+	else if (value == "else")
+		return Token(TokenType::TOKEN_ELSE, value, line, startCol);
+	else if (value == "while")
+		return Token(TokenType::TOKEN_WHILE, value, line, startCol);
+	else if (value == "true")
+		return Token(TokenType::TOKEN_TRUE, value, line, startCol);
+	else if (value == "false")
+		return Token(TokenType::TOKEN_FALSE, value, line, startCol);
 	
 	return Token(TokenType::TOKEN_ID, value, line, startCol);
 }
@@ -89,6 +101,11 @@ std::vector<Token> Lexer::tokenize()
 			tokens.push_back(integer());
 		else if (c == '\'' || c == '\"')
 			tokens.push_back(string());
+		else if (c == '/')
+		{
+			tokens.emplace_back(TokenType::TOKEN_SLASH, "=", line, col);
+			advance();
+		}
 		else if (c == '=')
 		{
 			tokens.emplace_back(TokenType::TOKEN_EQUALS, "=", line, col);
